@@ -227,7 +227,7 @@ async function buildFilters(){
   const prods = await getProds();
   const cats=[...new Set(prods.map(p=>p.categoria).filter(Boolean))];
   const wrap=document.getElementById('filters-wrap');
-  wrap.innerHTML='<button class="filter-btn active" onclick="setFilter('todos',this)">Todos</button>';
+  wrap.innerHTML='<button class="filter-btn active" onclick="setFilter(\'todos\',this)">Todos</button>';
   cats.forEach(cat=>{
     const btn=document.createElement('button');
     btn.className='filter-btn';

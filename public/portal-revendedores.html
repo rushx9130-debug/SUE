@@ -295,7 +295,7 @@ async function getWA(){
 function buildCats(){
   const cats=[...new Set(_prods.map(p=>p.categoria).filter(Boolean))];
   const row=document.getElementById('cats-row');
-  row.innerHTML='<button class="cat-btn active" onclick="setCat('todos',this)">Todos</button>';
+  row.innerHTML='<button class="cat-btn active" onclick="setCat(\'todos\',this)">Todos</button>';
   cats.forEach(cat=>{
     const btn=document.createElement('button');
     btn.className='cat-btn';
