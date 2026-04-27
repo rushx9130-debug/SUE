@@ -1,0 +1,20 @@
+      </div>
+    <div>
+      <p class="sec-title">Historial de ventas</p>
+      <div id="ventas-list" style="display:flex;flex-direction:column;gap:.625rem"></div>
+  </div>
+</main>
+
+<!-- ████ SHEET: PRODUCTO ████ -->
+<div class="sheet-overlay" id="prod-sheet" onclick="closeOnOverlay(event,'prod-sheet')">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h2 class="sheet-title" id="prod-sheet-title">Nuevo Producto</h2>
+    <input type="hidden" id="p-id">
+    <div class="field">
+      <label>Fotos del producto</label>
+      <div class="img-preview" id="p-img-preview" onclick="document.getElementById('p-images').click()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v6"/></svg>
+        <span style="margin-top:.25rem;font-size:.85rem">Toca para agregar fotos</span>
+      </div>
+      <input type="file" id="p-images" class="file-input" multiple accept="image/*" onchange="handleProductImages(event)">

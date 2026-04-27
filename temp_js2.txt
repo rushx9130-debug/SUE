@@ -1,0 +1,50 @@
+    <div id="comp-list" style="display:flex;flex-direction:column;gap:.75rem"></div>
+  <button class="fab" onclick="openSheet('comp-sheet')">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+  </button>
+</main>
+
+<!-- ████ VENTAS ████ -->
+<main id="page-ventas" class="page">
+  <header class="hdr">
+    <span class="hdr-title">💰 Ventas</span>
+    <button class="icon-btn" onclick="toggleTheme()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+  </header>
+  <div class="content">
+    <div>
+      <p class="sec-title">Nueva Venta</p>
+      <div class="card card-pad">
+        <div class="field" style="margin-bottom:.75rem">
+          <label>Buscar producto</label>
+          <input type="search" id="venta-search" placeholder="Nombre, talla…" oninput="renderVentaSearch()">
+        </div>
+        <div id="venta-search-results" style="display:flex;flex-direction:column;gap:.375rem;margin-bottom:.75rem;max-height:180px;overflow-y:auto"></div>
+        <div id="cart-items" style="margin-bottom:.75rem"></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;padding:.625rem 0;border-top:1px solid var(--divider)">
+          <span class="t-sm t-muted">Total</span>
+          <span style="font-size:1.375rem;font-weight:700;color:var(--primary)" id="cart-total">$0.00</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.625rem;margin-bottom:.75rem">
+          <div class="field"><label>Cliente</label><input type="text" id="v-cliente" placeholder="Cliente general"></div>
+          <div class="field"><label>Pago</label><select id="v-metodo"><option>Efectivo</option><option>Transferencia</option><option>Tarjeta</option><option>Otro</option></select></div>
+        <button class="btn btn-success btn-full" onclick="registrarVenta()">✅ Registrar Venta</button>
+      </div>
+    <div>
+      <p class="sec-title">Historial de ventas</p>
+      <div id="ventas-list" style="display:flex;flex-direction:column;gap:.625rem"></div>
+  </div>
+</main>
+
+<!-- ████ SHEET: PRODUCTO ████ -->
+<div class="sheet-overlay" id="prod-sheet" onclick="closeOnOverlay(event,'prod-sheet')">
+  <div class="sheet">
+    <div class="sheet-handle"></div>
+    <h2 class="sheet-title" id="prod-sheet-title">Nuevo Producto</h2>
+    <input type="hidden" id="p-id">
+    <div class="field">
+      <label>Fotos del producto</label>
+      <div class="img-preview" id="p-img-preview" onclick="document.getElementById('p-images').click()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v6"/></svg>
+        <span style="margin-top:.25rem;font-size:.85rem">Toca para agregar fotos</span>
+      </div>
+      <input type="file" id="p-images" class="file-input" multiple accept="image/*" onchange="handleProductImages(event)">
