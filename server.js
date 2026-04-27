@@ -6,7 +6,7 @@ const cors       = require('cors');
 const path       = require('path');
 const fs         = require('fs');
 const multer     = require('multer');
-const { v4: uuid } = require('uuid');
+const uuid = () => require('crypto').randomUUID();
 const db         = require('./db');
 
 const app  = express();
