@@ -194,29 +194,33 @@ img{display:block;max-width:100%;height:auto}
   </header>
   <div class="content">
     <p class="t-muted t-sm" id="dash-date" style="padding:0 .125rem"></p>
+    <!-- Numero WhatsApp global -->
     <div class="card card-pad" style="display:flex;align-items:center;gap:.75rem">
       <span style="font-size:1.4rem">📱</span>
       <div style="flex:1">
         <div style="font-weight:600;font-size:.9rem">Tu número WhatsApp</div>
         <div class="t-xs t-muted">Se usa en tienda y portal revendedores</div>
+      </div>
       <button class="btn btn-ghost" style="padding:.5rem .75rem;font-size:.8rem" onclick="editWhatsApp()">Editar</button>
     </div>
     <div>
       <p class="sec-title">Resumen de hoy</p>
       <div class="stat-grid">
-        <div class="stat-card"><div class="stat-dot" style="background:#be185d"></div><div class="stat-val" id="d-ventas-hoy">0</div><div class="stat-lbl">Ventas hoy</div>
-        <div class="stat-card"><div class="stat-dot" style="background:#16a34a"></div><div class="stat-val" id="d-ing-hoy">$0</div><div class="stat-lbl">Ingresos hoy</div>
-        <div class="stat-card"><div class="stat-dot" style="background:#2563eb"></div><div class="stat-val" id="d-productos">0</div><div class="stat-lbl">Productos</div>
-        <div class="stat-card"><div class="stat-dot" style="background:#7c3aed"></div><div class="stat-val" id="d-stock">0</div><div class="stat-lbl">Stock total</div>
-        <div class="stat-card"><div class="stat-dot" style="background:#059669"></div><div class="stat-val" id="d-revendedores">0</div><div class="stat-lbl">Revendedores</div>
+        <div class="stat-card"><div class="stat-dot" style="background:#be185d"></div><div class="stat-val" id="d-ventas-hoy">0</div><div class="stat-lbl">Ventas hoy</div></div>
+        <div class="stat-card"><div class="stat-dot" style="background:#16a34a"></div><div class="stat-val" id="d-ing-hoy">$0</div><div class="stat-lbl">Ingresos hoy</div></div>
+        <div class="stat-card"><div class="stat-dot" style="background:#2563eb"></div><div class="stat-val" id="d-productos">0</div><div class="stat-lbl">Productos</div></div>
+        <div class="stat-card"><div class="stat-dot" style="background:#7c3aed"></div><div class="stat-val" id="d-stock">0</div><div class="stat-lbl">Stock total</div></div>
+        <div class="stat-card"><div class="stat-dot" style="background:#059669"></div><div class="stat-val" id="d-revendedores">0</div><div class="stat-lbl">Revendedores</div></div>
       </div>
+    </div>
     <div>
       <p class="sec-title">Total histórico</p>
       <div class="card card-pad" style="display:flex;gap:1.5rem">
-        <div style="flex:1;text-align:center"><div class="stat-val" id="d-total-ventas">0</div><div class="stat-lbl" style="text-align:center">Ventas totales</div>
+        <div style="flex:1;text-align:center"><div class="stat-val" id="d-total-ventas">0</div><div class="stat-lbl" style="text-align:center">Ventas totales</div></div>
         <div style="width:1px;background:var(--divider)"></div>
-        <div style="flex:1;text-align:center"><div class="stat-val" id="d-total-ing" style="color:var(--success)">$0</div><div class="stat-lbl" style="text-align:center">Ingresos totales</div>
+        <div style="flex:1;text-align:center"><div class="stat-val" id="d-total-ing" style="color:var(--success)">$0</div><div class="stat-lbl" style="text-align:center">Ingresos totales</div></div>
       </div>
+    </div>
     <div>
       <p class="sec-title">Top productos más vendidos</p>
       <div class="card" id="dash-top-list">
@@ -224,7 +228,9 @@ img{display:block;max-width:100%;height:auto}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4m1.6 8L5 3M7 13l-2 5h12m-7-5v5m4-5v5"/></svg>
           <span class="t-sm">Aún no hay ventas registradas</span>
         </div>
+      </div>
     </div>
+  </div>
 </main>
 
 <!-- ████ INVENTARIO ████ -->
@@ -239,6 +245,7 @@ img{display:block;max-width:100%;height:auto}
       <input type="search" placeholder="Buscar por nombre, categoría, talla…" oninput="renderInventario()" id="inv-search">
     </div>
     <div id="inv-list" style="display:flex;flex-direction:column;gap:.625rem"></div>
+  </div>
   <button class="fab" onclick="openProdSheet()">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
   </button>
@@ -256,6 +263,7 @@ img{display:block;max-width:100%;height:auto}
       <input type="search" placeholder="Buscar revendedor…" oninput="renderRevendedores()" id="rev-search">
     </div>
     <div id="rev-list" style="display:flex;flex-direction:column;gap:.625rem"></div>
+  </div>
   <button class="fab" onclick="openRevSheet()">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
   </button>
@@ -269,6 +277,7 @@ img{display:block;max-width:100%;height:auto}
   </header>
   <div class="content">
     <div id="comp-list" style="display:flex;flex-direction:column;gap:.75rem"></div>
+  </div>
   <button class="fab" onclick="openSheet('comp-sheet')">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
   </button>
@@ -297,11 +306,14 @@ img{display:block;max-width:100%;height:auto}
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:.625rem;margin-bottom:.75rem">
           <div class="field"><label>Cliente</label><input type="text" id="v-cliente" placeholder="Cliente general"></div>
           <div class="field"><label>Pago</label><select id="v-metodo"><option>Efectivo</option><option>Transferencia</option><option>Tarjeta</option><option>Otro</option></select></div>
+        </div>
         <button class="btn btn-success btn-full" onclick="registrarVenta()">✅ Registrar Venta</button>
       </div>
+    </div>
     <div>
       <p class="sec-title">Historial de ventas</p>
       <div id="ventas-list" style="display:flex;flex-direction:column;gap:.625rem"></div>
+    </div>
   </div>
 </main>
 
@@ -319,24 +331,21 @@ img{display:block;max-width:100%;height:auto}
       </div>
       <input type="file" id="p-images" class="file-input" multiple accept="image/*" onchange="handleProductImages(event)">
       <div class="img-gallery" id="p-img-gallery"></div>
+    </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
       <div class="field" style="grid-column:1/-1"><label>Nombre *</label><input id="p-nombre" placeholder="Ej: Blusa floral"></div>
       <div class="field"><label>Categoría</label><input id="p-cat" placeholder="Ej: Blusas"></div>
       <div class="field"><label>Talla</label><input id="p-talla" placeholder="S, M, L…"></div>
-      <div class="field"><label>Color</label><input id="p-color" placeholder="Ej: Rojo"></div>
-      <div class="field"><label>País origen</label><select id="p-pais"><option>USA</option><option>China</option><option>México</option><option>Otro</option></select></div>
-      <div class="field"><label>Costo $</label><input id="p-costo" type="number" placeholder="0.00" step="0.01"></div>
-      <div class="field"><label>Precio $ *</label><input id="p-precio" type="number" placeholder="0.00" step="0.01"></div>
+      <div class="field"><label>Color</label><input id="p-color" placeholder="Ej: Rosa"></div>
+      <div class="field"><label>País origen</label><input id="p-pais" value="USA"></div>
+      <div class="field"><label>Costo compra $</label><input id="p-costo" type="number" step="0.01" placeholder="0.00"></div>
+      <div class="field"><label>Precio público $</label><input id="p-precio" type="number" step="0.01" placeholder="0.00"></div>
       <div class="field"><label>Stock</label><input id="p-stock" type="number" placeholder="0"></div>
-      <div class="field" style="grid-column:1/-1"><label>Descripción</label><textarea id="p-desc" placeholder="Detalles del producto…"></textarea></div>
-      <div class="field" style="grid-column:1/-1;display:flex;flex-direction:row;align-items:center;gap:.75rem">
-        <label style="margin:0">Publicado en tienda</label>
-        <input type="checkbox" id="p-publicado" checked style="width:20px;height:20px;accent-color:var(--primary);cursor:pointer">
-      </div>
+      <div class="field" style="grid-column:1/-1"><label>Descripción (para tienda)</label><textarea id="p-desc" placeholder="Describe el producto, telas, características…"></textarea></div>
     </div>
     <div class="sheet-actions">
       <button class="btn btn-ghost" onclick="closeSheet('prod-sheet')">Cancelar</button>
-      <button class="btn btn-primary" onclick="saveProduct()">Guardar</button>
+      <button class="btn btn-primary" onclick="saveProducto()">💾 Guardar y Publicar</button>
     </div>
   </div>
 </div>
@@ -347,18 +356,71 @@ img{display:block;max-width:100%;height:auto}
     <div class="sheet-handle"></div>
     <h2 class="sheet-title" id="rev-sheet-title">Nuevo Revendedor</h2>
     <input type="hidden" id="r-id">
-    <div class="field"><label>Nombre *</label><input id="r-nombre" placeholder="Ej: María López"></div>
-    <div class="field"><label>Teléfono</label><input id="r-telefono" placeholder="Ej: 5512345678"></div>
-    <div class="field"><label>Descuento %</label><input id="r-descuento" type="number" placeholder="0" step="0.1"></div>
-    <div class="field"><label>Notas</label><textarea id="r-notas" placeholder="Opcional…"></textarea></div>
-    <div class="field">
-      <label>Key de acceso</label>
-      <div class="key-box"><span id="r-key">REV-0000</span><button class="icon-btn" style="width:32px;height:32px;background:none" onclick="copyKey()" title="Copiar">📋</button></div>
+    <!-- KEY generada automáticamente -->
+    <div style="background:var(--primary-hi);border-radius:var(--r-md);padding:.875rem 1rem;">
+      <div class="t-xs" style="font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.375rem">🔑 KEY única del revendedor</div>
+      <div class="key-box" id="r-key-display">---</div>
+      <div class="t-xs t-muted" style="margin-top:.375rem">Se genera automáticamente. El revendedor ingresa esta KEY en su portal.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr;gap:.75rem">
+      <div class="field"><label>Nombre *</label><input id="r-nombre" placeholder="Ej: María González"></div>
+      <div class="field"><label>Teléfono/WhatsApp</label><input id="r-telefono" placeholder="099 123 4567"></div>
+      <div class="field">
+        <label>Descuento sobre precio público %</label>
+        <input id="r-descuento" type="number" min="0" max="80" step="0.1" placeholder="10" oninput="previewDescuento()">
+        <div id="descuento-preview" class="t-xs" style="color:var(--revendedor);margin-top:.25rem;font-weight:600"></div>
+      </div>
+      <div class="field"><label>Notas</label><textarea id="r-notas" placeholder="Dirección, preferencias…"></textarea></div>
     </div>
     <div class="sheet-actions">
       <button class="btn btn-ghost" onclick="closeSheet('rev-sheet')">Cancelar</button>
-      <button class="btn btn-revendedor" onclick="saveRevendedor()">Guardar</button>
+      <button class="btn btn-revendedor" onclick="saveRevendedor()">💾 Guardar</button>
     </div>
+  </div>
+</div>
+
+<!-- ████ SHEET: ACCIÓN PRODUCTO ████ -->
+<div class="sheet-overlay" id="prod-action-sheet" onclick="closeOnOverlay(event,'prod-action-sheet')">
+  <div class="sheet" style="gap:.625rem">
+    <div class="sheet-handle"></div>
+    <p class="sheet-title" id="action-prod-name" style="font-size:1rem"></p>
+    <button class="btn btn-ghost btn-full" style="justify-content:flex-start;gap:.75rem" onclick="editProducto()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Editar producto
+    </button>
+    <button class="btn btn-ghost btn-full" style="justify-content:flex-start;gap:.75rem;color:var(--danger)" onclick="deleteProducto()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+      Eliminar producto
+    </button>
+    <button class="btn btn-ghost btn-full" onclick="closeSheet('prod-action-sheet')" style="color:var(--muted)">Cancelar</button>
+  </div>
+</div>
+
+<!-- ████ SHEET: ACCIÓN REVENDEDOR ████ -->
+<div class="sheet-overlay" id="rev-action-sheet" onclick="closeOnOverlay(event,'rev-action-sheet')">
+  <div class="sheet" style="gap:.75rem">
+    <div class="sheet-handle"></div>
+    <p class="sheet-title" id="action-rev-name" style="font-size:1rem"></p>
+    <!-- KEY del revendedor -->
+    <div style="background:var(--surface2);border-radius:var(--r-md);padding:.75rem 1rem">
+      <div class="t-xs t-muted" style="margin-bottom:.375rem;font-weight:600">KEY DEL REVENDEDOR</div>
+      <div class="key-box" id="action-rev-key">---</div>
+      <button class="btn btn-ghost btn-full" style="margin-top:.5rem;font-size:.8rem;padding:.5rem" onclick="copyRevKey()">📋 Copiar KEY</button>
+    </div>
+    <div style="background:var(--surface2);border-radius:var(--r-md);padding:.75rem 1rem">
+      <div class="t-xs t-muted" style="margin-bottom:.375rem;font-weight:600">DESCUENTO</div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--revendedor)" id="action-rev-desc">0%</div>
+      <div class="t-xs t-muted" id="action-rev-phone"></div>
+    </div>
+    <button class="btn btn-ghost btn-full" style="justify-content:flex-start;gap:.75rem" onclick="editRevendedor()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Editar revendedor
+    </button>
+    <button class="btn btn-ghost btn-full" style="justify-content:flex-start;gap:.75rem;color:var(--danger)" onclick="deleteRevendedor()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+      Eliminar revendedor
+    </button>
+    <button class="btn btn-ghost btn-full" onclick="closeSheet('rev-action-sheet')" style="color:var(--muted)">Cancelar</button>
   </div>
 </div>
 
@@ -366,347 +428,640 @@ img{display:block;max-width:100%;height:auto}
 <div class="sheet-overlay" id="comp-sheet" onclick="closeOnOverlay(event,'comp-sheet')">
   <div class="sheet">
     <div class="sheet-handle"></div>
-    <h2 class="sheet-title">Nueva Compra Exterior</h2>
-    <div class="field"><label>Referencia / Tracking</label><input id="c-ref" placeholder="Ej: TRK123456"></div>
+    <h2 class="sheet-title">Nueva Compra del Exterior</h2>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem">
-      <div class="field"><label>Proveedor</label><input id="c-proveedor" placeholder="Ej: Alibaba"></div>
-      <div class="field"><label>País</label><select id="c-pais"><option>USA</option><option>China</option><option>México</option><option>Otro</option></select></div>
-      <div class="field"><label>Fecha compra</label><input id="c-fecha" type="date"></div>
-      <div class="field"><label>Estado</label><select id="c-estado"><option>En tránsito</option><option>En aduana</option><option>En almacén</option><option>Entregado</option></select></div>
-      <div class="field"><label>Costo productos $</label><input id="c-cprod" type="number" placeholder="0" step="0.01"></div>
-      <div class="field"><label>Costo envío $</label><input id="c-cenvio" type="number" placeholder="0" step="0.01"></div>
-      <div class="field"><label>Otros costos $</label><input id="c-otros" type="number" placeholder="0" step="0.01"></div>
+      <div class="field" style="grid-column:1/-1"><label>Referencia / Tracking</label><input id="c-ref" placeholder="Ej: SHEIN-2025-001"></div>
+      <div class="field"><label>Proveedor</label><input id="c-prov" placeholder="Ej: SHEIN"></div>
+      <div class="field"><label>País</label><input id="c-pais" value="USA"></div>
+      <div class="field"><label>Fecha orden</label><input id="c-fecha" type="date"></div>
+      <div class="field"><label>Estado</label><select id="c-estado"><option>En tránsito</option><option>Llegó</option><option>Cancelada</option></select></div>
+      <div class="field"><label>Costo productos $</label><input id="c-cprod" type="number" step="0.01" placeholder="0.00"></div>
+      <div class="field"><label>Costo envío $</label><input id="c-cenvio" type="number" step="0.01" placeholder="0.00"></div>
+      <div class="field"><label>Aduana / Otros $</label><input id="c-otros" type="number" step="0.01" placeholder="0.00"></div>
+      <div class="field" style="grid-column:1/-1"><label>Notas</label><textarea id="c-notas" placeholder="Observaciones…"></textarea></div>
     </div>
-    <div class="field"><label>Notas</label><textarea id="c-notas" placeholder="Detalles adicionales…"></textarea></div>
     <div class="sheet-actions">
       <button class="btn btn-ghost" onclick="closeSheet('comp-sheet')">Cancelar</button>
-      <button class="btn btn-primary" onclick="saveCompra()">Guardar</button>
+      <button class="btn btn-primary" onclick="saveCompra()">💾 Guardar</button>
     </div>
   </div>
 </div>
 
-<!-- ████ SHEET: WHATSAPP ████ -->
-<div class="sheet-overlay" id="wa-sheet" onclick="closeOnOverlay(event,'wa-sheet')">
-  <div class="sheet">
+<!-- ████ SHEET: ACCIÓN COMPRA ████ -->
+<div class="sheet-overlay" id="comp-action-sheet" onclick="closeOnOverlay(event,'comp-action-sheet')">
+  <div class="sheet" style="gap:.625rem">
     <div class="sheet-handle"></div>
-    <h2 class="sheet-title">Número WhatsApp</h2>
-    <p class="t-sm t-muted" style="text-align:center">Se usa en la tienda pública y el portal de revendedores</p>
-    <div class="field">
-      <label>Número (con lada)</label>
-      <div class="whatsapp-number-field">
-        <input id="wa-numero" placeholder="Ej: 5215512345678" style="flex:1">
-        <button class="btn btn-primary" onclick="saveWhatsApp()">Guardar</button>
-      </div>
+    <p class="sheet-title" id="action-comp-ref" style="font-size:1rem"></p>
+    <button class="btn btn-success btn-full" style="justify-content:flex-start;gap:.75rem" onclick="markCompraArrived()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      Marcar como "Llegó"
+    </button>
+    <button class="btn btn-ghost btn-full" style="justify-content:flex-start;gap:.75rem;color:var(--danger)" onclick="deleteCompra()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+      Eliminar compra
+    </button>
+    <button class="btn btn-ghost btn-full" onclick="closeSheet('comp-action-sheet')" style="color:var(--muted)">Cancelar</button>
+  </div>
+</div>
+
+<!-- SHEET: WhatsApp -->
+<div class="sheet-overlay" id="wa-sheet" onclick="closeOnOverlay(event,'wa-sheet')">
+  <div class="sheet" style="gap:.75rem">
+    <div class="sheet-handle"></div>
+    <h2 class="sheet-title">📱 Número WhatsApp</h2>
+    <div class="field"><label>Número con código de país</label><input id="wa-number" type="tel" placeholder="Ej: 5930999123456"></div>
+    <p class="t-xs t-muted" style="text-align:center">Ejemplo: para Ecuador 593 + número sin 0 (5930991234567)</p>
+    <div class="sheet-actions">
+      <button class="btn btn-ghost" onclick="closeSheet('wa-sheet')">Cancelar</button>
+      <button class="btn btn-success" onclick="saveWhatsApp()">💾 Guardar</button>
     </div>
   </div>
 </div>
 
-<!-- ████ LIGHTBOX ████ -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lightbox-close" onclick="closeLightboxBtn()">✕</button>
-  <img id="lb-img" src="" alt="">
-  <div class="lightbox-nav" id="lb-nav"></div>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightboxOnBg(event)">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-nav" id="lightbox-nav"></div>
   <div class="lightbox-actions">
-    <button class="lightbox-btn" style="background:#fff;color:#000" onclick="prevLb()">◀ Anterior</button>
-    <button class="lightbox-btn" style="background:var(--primary);color:#fff" onclick="nextLb()">Siguiente ▶</button>
+    <button class="lightbox-btn" style="background:#25D366;color:#fff" onclick="downloadLightboxImg()">
+      ⬇️ Descargar foto
+    </button>
   </div>
 </div>
 
 <script>
-const API='';
-let state={productos:[],revendedores:[],compras:[],ventas:[],cart:[],whatsapp:'',currentLb:{images:[],idx:0}};
+// ─── CONFIG ──────────────────────────────
+const API_BASE = '';  // mismo origen; cambia a tu URL de Railway si sirves HTML por separado
 
-function $(id){return document.getElementById(id)}
-function fmt(n){return '$'+Number(n||0).toLocaleString('es-MX',{minimumFractionDigits:2,maximumFractionDigits:2})}
-function nowDate(){return new Date().toISOString().split('T')[0]}
+// ─── API CLIENT ──────────────────────────
+const API = {
+  async get(path) {
+    const r = await fetch(API_BASE + path);
+    if (!r.ok) throw new Error(await r.text());
+    return r.json();
+  },
+  async post(path, body) {
+    const r = await fetch(API_BASE + path, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (!r.ok) throw new Error(await r.text());
+    return r.json();
+  },
+  async put(path, body) {
+    const r = await fetch(API_BASE + path, {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (!r.ok) throw new Error(await r.text());
+    return r.json();
+  },
+  async patch(path, body) {
+    const r = await fetch(API_BASE + path, {
+      method: 'PATCH', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if (!r.ok) throw new Error(await r.text());
+    return r.json();
+  },
+  async del(path) {
+    const r = await fetch(API_BASE + path, { method: 'DELETE' });
+    if (!r.ok) throw new Error(await r.text());
+    return r.json();
+  },
+  async uploadImages(productoId, files) {
+    const fd = new FormData();
+    files.forEach(f => fd.append('imagenes', f));
+    const r = await fetch(`${API_BASE}/api/productos/${productoId}/imagenes`, {
+      method: 'POST', body: fd,
+    });
+    if (!r.ok) throw new Error(await r.text());
+    return r.json();
+  },
+};
 
-async function get(path){const r=await fetch(API+path);return r.json()}
-async function post(path,body){const r=await fetch(API+path,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});return r.json()}
-async function put(path,body){const r=await fetch(API+path,{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});return r.json()}
-async function del(path){const r=await fetch(API+path,{method:'DELETE'});return r.json()}
+// ─── STATE ───────────────────────────────
+let _prods=[], _revendedores=[], _compras=[], _ventas=[], _whatsapp='';
+let selectedProdId=null, selectedRevId=null, selectedCompId=null;
+let cart=[], editingProdId=null, editingRevId=null;
+// productImages: [{ id, url, data }]  (data = dataURL para preview de nuevas)
+// pendingFiles: [File]  (archivos nuevos aún no subidos)
+let productImages=[], pendingFiles=[];
+let lightboxImages=[], lightboxIdx=0;
 
-function openSheet(id){$(id).classList.add('open');document.body.style.overflow='hidden'}
-function closeSheet(id){$(id).classList.remove('open');document.body.style.overflow=''}
-function closeOnOverlay(e,id){if(e.target.id===id)closeSheet(id)}
-
-function goTo(page){
-  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  document.getElementById('page-'+page).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  const idx=['dashboard','inventario','revendedores','compras','ventas'].indexOf(page);
-  if(idx>=0)document.querySelectorAll('.nav-item')[idx].classList.add('active');
-  if(page==='dashboard')renderDashboard();
-  if(page==='inventario')renderInventario();
-  if(page==='revendedores')renderRevendedores();
-  if(page==='compras')renderCompras();
-  if(page==='ventas')renderVentas();
+// ─── LOAD ────────────────────────────────
+async function loadAll() {
+  [_prods, _revendedores, _compras, _ventas] = await Promise.all([
+    API.get('/api/productos'),
+    API.get('/api/revendedores'),
+    API.get('/api/compras'),
+    API.get('/api/ventas'),
+  ]);
+  const cfg = await API.get('/api/config');
+  _whatsapp = cfg.whatsapp || '';
 }
 
-// ─── PRODUCTOS ─────────────────────────────
-async function loadProductos(){state.productos=await get('/api/productos')}
-async function renderInventario(){
-  await loadProductos();
-  const q=$('inv-search').value.toLowerCase();
-  const list=$('inv-list');
-  const filtro=state.productos.filter(p=>!q||[p.nombre,p.categoria,p.talla,p.color].some(x=>(x||'').toLowerCase().includes(q)));
-  if(!filtro.length){list.innerHTML='<div class="empty"><span class="t-sm">Sin productos</span></div>';return}
-  list.innerHTML=filtro.map(p=>`
-    <div class="prod-card" onclick="editProduct(${p.id})">
-      <div class="prod-thumb">${p.imagenes?.[0]?`<img src="${p.imagenes[0]}" loading="lazy">`:'📦'}</div>
-      <div class="prod-info">
-        <div class="prod-name">${p.nombre}</div>
-        <div class="prod-meta">${p.categoria||''} · ${p.talla||''} · ${p.color||''}</div>
-      </div>
-      <div class="prod-right">
-        <div class="prod-price">${fmt(p.precio)}</div>
-        <div class="prod-stock">Stock: ${p.stock}</div>
-        ${p.publicado?'<span class="badge badge-green">Publicado</span>':'<span class="badge badge-warn">Oculto</span>'}
-      </div>
-    </div>`).join('');
+// ─── HELPERS ─────────────────────────────
+const fmt=(n)=>'$'+Number(n||0).toFixed(2);
+const today=()=>new Date().toISOString().split('T')[0];
+const todayFmt=()=>{const d=new Date();return d.toLocaleDateString('es',{weekday:'long',year:'numeric',month:'long',day:'numeric'})};
+const emoji=(cat)=>{const m={'blusas':'👚','pantalones':'👖','vestidos':'👗','zapatos':'👟','bolsos':'👜','accesorios':'💍','camisetas':'👕','pijamas':'🌙','abrigos':'🧥'};return m[(cat||'').toLowerCase()]||'👚'};
+
+// ─── KEY GENERATOR ───────────────────────
+function generateKey(){
+  const chars='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  let k='';
+  for(let i=0;i<12;i++){
+    if(i===4||i===8) k+='-';
+    k+=chars[Math.floor(Math.random()*chars.length)];
+  }
+  return k;
 }
 
-let prodImages=[];
-function openProdSheet(){
-  $('prod-sheet-title').textContent='Nuevo Producto';
-  $('p-id').value='';
-  $('p-nombre').value='';$('p-cat').value='';$('p-talla').value='';$('p-color').value='';
-  $('p-pais').value='USA';$('p-costo').value='';$('p-precio').value='';$('p-stock').value='';$('p-desc').value='';
-  $('p-publicado').checked=true;
-  prodImages=[];renderProdGallery();
-  $('p-img-preview').innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v6"/></svg><span style="margin-top:.25rem;font-size:.85rem">Toca para agregar fotos</span>';
-  openSheet('prod-sheet');
-}
-function handleProductImages(e){
-  const files=Array.from(e.target.files||[]);
-  if(!files.length)return;
-  files.forEach(file=>{
+// ─── IMAGE HANDLERS ──────────────────────
+function handleProductImages(event){
+  Array.from(event.target.files).forEach((file, index)=>{
+    if(!file.type.startsWith('image/')) return;
+    pendingFiles.push(file);
     const reader=new FileReader();
-    reader.onload=ev=>{prodImages.push({file,preview:ev.target.result});renderProdGallery();};
+    reader.onload=(e)=>{
+      productImages.push({id:'new-'+Date.now()+index, data:e.target.result, _file:file});
+      rebuildGallery();
+    };
     reader.readAsDataURL(file);
   });
 }
-function renderProdGallery(){
-  const g=$('p-img-gallery');
-  if(!prodImages.length){g.innerHTML='';return}
-  g.innerHTML=prodImages.map((img,i)=>`<div class="img-thumb-wrap"><img class="img-thumb" src="${img.preview||img}" onclick="event.stopPropagation();"><span class="img-thumb-remove" onclick="event.stopPropagation();prodImages.splice(${i},1);renderProdGallery();">×</span></div>`).join('');
-}
-async function saveProduct(){
-  const id=$('p-id').value;
-  const body=new FormData();
-  body.append('nombre',$('p-nombre').value);
-  body.append('categoria',$('p-cat').value);
-  body.append('talla',$('p-talla').value);
-  body.append('color',$('p-color').value);
-  body.append('pais_origen',$('p-pais').value);
-  body.append('costo',$('p-costo').value||0);
-  body.append('precio',$('p-precio').value||0);
-  body.append('stock',$('p-stock').value||0);
-  body.append('descripcion',$('p-desc').value);
-  body.append('publicado',$('p-publicado').checked?1:0);
-  const existing=prodImages.filter(img=>typeof img==='string');
-  if(existing.length)body.append('imagenesExistentes',JSON.stringify(existing));
-  prodImages.filter(img=>img.file).forEach(img=>body.append('imagenes',img.file));
-  const url=id?`/api/productos/${id}`:'/api/productos';
-  const method=id?'PUT':'POST';
-  const r=await fetch(API+url,{method,body});
-  if(r.ok){closeSheet('prod-sheet');renderInventario();renderDashboard();}
-  else alert('Error guardando producto');
-}
-async function editProduct(id){
-  const p=state.productos.find(x=>x.id===id);if(!p)return;
-  $('prod-sheet-title').textContent='Editar Producto';
-  $('p-id').value=p.id;
-  $('p-nombre').value=p.nombre||'';$('p-cat').value=p.categoria||'';$('p-talla').value=p.talla||'';$('p-color').value=p.color||'';
-  $('p-pais').value=p.pais_origen||'USA';$('p-costo').value=p.costo||'';$('p-precio').value=p.precio||'';$('p-stock').value=p.stock||'';$('p-desc').value=p.descripcion||'';
-  $('p-publicado').checked=!!p.publicado;
-  prodImages=p.imagenes||[];renderProdGallery();
-  openSheet('prod-sheet');
-}
-async function deleteProduct(id){if(!confirm('¿Eliminar producto?'))return;await del(`/api/productos/${id}`);renderInventario();renderDashboard();}
 
-// ─── REVENDEDORES ──────────────────────────
-async function loadRevendedores(){state.revendedores=await get('/api/revendedores')}
-async function renderRevendedores(){
-  await loadRevendedores();
-  const q=$('rev-search').value.toLowerCase();
-  const list=$('rev-list');
-  const filtro=state.revendedores.filter(r=>!q||(r.nombre||'').toLowerCase().includes(q));
-  if(!filtro.length){list.innerHTML='<div class="empty"><span class="t-sm">Sin revendedores</span></div>';return}
-  list.innerHTML=filtro.map(r=>`
-    <div class="prod-card" onclick="editRevendedor(${r.id})">
-      <div class="prod-thumb" style="background:var(--revendedor);color:#fff;font-size:1.2rem">👤</div>
-      <div class="prod-info">
-        <div class="prod-name">${r.nombre}</div>
-        <div class="prod-meta">${r.telefono||''} · Descuento ${r.descuento||0}%</div>
-      </div>
-      <div class="prod-right">
-        <span class="badge badge-revendedor">${r.key}</span>
-      </div>
-    </div>`).join('');
-}
-function genKey(){return 'REV-'+Math.random().toString(36).substring(2,6).toUpperCase()}
-function openRevSheet(){
-  $('rev-sheet-title').textContent='Nuevo Revendedor';
-  $('r-id').value='';$('r-nombre').value='';$('r-telefono').value='';$('r-descuento').value='';$('r-notas').value='';
-  $('r-key').textContent=genKey();
-  openSheet('rev-sheet');
-}
-function copyKey(){navigator.clipboard.writeText($('r-key').textContent);}
-async function saveRevendedor(){
-  const id=$('r-id').value;
-  const body={nombre:$('r-nombre').value,telefono:$('r-telefono').value,descuento:Number($('r-descuento').value)||0,notas:$('r-notas').value,key:$('r-key').textContent};
-  if(id){await put(`/api/revendedores/${id}`,body)}else{await post('/api/revendedores',body)}
-  closeSheet('rev-sheet');renderRevendedores();renderDashboard();
-}
-async function editRevendedor(id){
-  const r=state.revendedores.find(x=>x.id===id);if(!r)return;
-  $('rev-sheet-title').textContent='Editar Revendedor';
-  $('r-id').value=r.id;$('r-nombre').value=r.nombre||'';$('r-telefono').value=r.telefono||'';$('r-descuento').value=r.descuento||'';$('r-notas').value=r.notas||'';$('r-key').textContent=r.key;
-  openSheet('rev-sheet');
+function rebuildGallery(){
+  const gallery=document.getElementById('p-img-gallery');
+  gallery.innerHTML='';
+  productImages.forEach(img=>{
+    const wrap=document.createElement('div');
+    wrap.className='img-thumb-wrap';
+    const thumb=document.createElement('img');
+    thumb.className='img-thumb';
+    thumb.src=img.data||img.url;
+    const rm=document.createElement('div');
+    rm.className='img-thumb-remove';
+    rm.textContent='×';
+    rm.onclick=async (e)=>{
+      e.stopPropagation();
+      if(img.id && !String(img.id).startsWith('new-')) {
+        try { await API.del('/api/imagenes/'+img.id); } catch(err) { console.warn(err); }
+      }
+      pendingFiles=pendingFiles.filter(f=>f!==img._file);
+      productImages=productImages.filter(x=>x.id!==img.id);
+      rebuildGallery();
+    };
+    wrap.appendChild(thumb);
+    wrap.appendChild(rm);
+    gallery.appendChild(wrap);
+  });
+  const preview=document.getElementById('p-img-preview');
+  if(productImages.length>0){
+    const src=productImages[0].data||productImages[0].url;
+    preview.innerHTML=`<img src="${src}" style="width:100%;height:100%;object-fit:cover;border-radius:var(--r-md)"><div style="position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.7);color:#fff;padding:2px 8px;border-radius:var(--r-full);font-size:.75rem;font-weight:700">${productImages.length} foto${productImages.length>1?'s':''}</div>`;
+  } else {
+    preview.innerHTML=`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32" height="32"><path d="M21 15v4a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-4"/><polyline points="17 8 12 3 7 8"/><path d="M12 3v6"/></svg><span style="margin-top:.25rem;font-size:.85rem">Toca para agregar fotos</span>`;
+  }
 }
 
-// ─── COMPRAS ───────────────────────────────
-async function loadCompras(){state.compras=await get('/api/compras')}
-async function renderCompras(){
-  await loadCompras();
-  const list=$('comp-list');
-  if(!state.compras.length){list.innerHTML='<div class="empty"><span class="t-sm">Sin compras registradas</span></div>';return}
-  list.innerHTML=state.compras.map(c=>{
-    const total=(c.cprod||0)+(c.cenvio||0)+(c.otros||0);
-    return `<div class="purch-card" onclick="editCompra(${c.id})">
-      <div class="purch-head"><span class="badge badge-blue">${c.estado}</span><span class="t-sm t-muted">${c.fecha||''}</span></div>
-      <div style="font-weight:600;margin-bottom:.25rem">${c.ref||'Sin referencia'} · ${c.proveedor||''}</div>
-      <div class="purch-detail"><span>🌐 ${c.pais||'USA'}</span><span>💰 Total: ${fmt(total)}</span></div>
+// ─── LIGHTBOX ────────────────────────────
+function openLightbox(images, startIdx){
+  lightboxImages=images;
+  lightboxIdx=startIdx;
+  showLightboxImg();
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function showLightboxImg(){
+  const img=lightboxImages[lightboxIdx];
+  document.getElementById('lightbox-img').src=img.data||img.url||img;
+  const nav=document.getElementById('lightbox-nav');
+  if(lightboxImages.length>1){
+    nav.innerHTML=lightboxImages.map((x,i)=>`<button class="lightbox-dot${i===lightboxIdx?' active':''}" onclick="lightboxGo(${i})"></button>`).join('');
+  } else nav.innerHTML='';
+}
+
+function lightboxGo(i){lightboxIdx=i;showLightboxImg()}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''}
+function closeLightboxOnBg(e){if(e.target===document.getElementById('lightbox'))closeLightbox()}
+
+function downloadLightboxImg(){
+  const img=lightboxImages[lightboxIdx];
+  const src=img.data||img.url||img;
+  const a=document.createElement('a');
+  a.href=src;
+  a.download='foto-producto-'+Date.now()+'.jpg';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// ─── NAVIGATION ──────────────────────────
+async function goTo(page){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('page-'+page).classList.add('active');
+  const idx=['dashboard','inventario','revendedores','compras','ventas'].indexOf(page);
+  if(idx>=0) document.querySelectorAll('.nav-item')[idx]?.classList.add('active');
+  await loadAll();
+  const renders={
+    dashboard:renderDashboard,
+    inventario:renderInventario,
+    revendedores:renderRevendedores,
+    compras:renderCompras,
+    ventas:()=>{renderVentasList();renderCartUI()},
+  };
+  renders[page]?.();
+}
+
+// ─── THEME ───────────────────────────────
+let theme=localStorage.getItem('tp_theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+document.documentElement.setAttribute('data-theme',theme);
+function toggleTheme(){theme=theme==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',theme);localStorage.setItem('tp_theme',theme)}
+
+// ─── SHEETS ──────────────────────────────
+function openSheet(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'}
+function closeSheet(id){document.getElementById(id).classList.remove('open');document.body.style.overflow=''}
+function closeOnOverlay(e,id){if(e.target===document.getElementById(id))closeSheet(id)}
+
+// ─── DASHBOARD ───────────────────────────
+function renderDashboard(){
+  document.getElementById('dash-date').textContent=todayFmt();
+  const hoy=today();
+  const ventasHoy=_ventas.filter(v=>(v.fecha||'').startsWith(hoy));
+  const ingHoy=ventasHoy.reduce((s,v)=>s+v.total,0);
+  document.getElementById('d-ventas-hoy').textContent=ventasHoy.length;
+  document.getElementById('d-ing-hoy').textContent=fmt(ingHoy);
+  document.getElementById('d-productos').textContent=_prods.length;
+  document.getElementById('d-stock').textContent=_prods.reduce((s,p)=>s+(+p.stock||0),0);
+  document.getElementById('d-revendedores').textContent=_revendedores.length;
+  document.getElementById('d-total-ventas').textContent=_ventas.length;
+  document.getElementById('d-total-ing').textContent=fmt(_ventas.reduce((s,v)=>s+v.total,0));
+  const counts={};
+  _ventas.forEach(v=>(v.items||[]).forEach(i=>{counts[i.nombre]=(counts[i.nombre]||0)+i.qty}));
+  const top=Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,5);
+  const el=document.getElementById('dash-top-list');
+  if(!top.length){el.innerHTML=`<div class="empty" style="padding:1.5rem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="32"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4m1.6 8L5 3M7 13l-2 5h12m-7-5v5m4-5v5"/></svg><span class="t-sm">Sin ventas aún</span></div>`;return}
+  const maxV=top[0][1];
+  el.innerHTML=top.map(([n,c],i)=>`<div class="card-row"><span style="font-size:.8rem;font-weight:700;color:var(--muted);width:18px">${i+1}</span><div style="flex:1"><div class="t-sm" style="font-weight:600;margin-bottom:.25rem">${n}</div><div class="progress-wrap"><div class="progress-fill" style="width:${Math.round(c/maxV*100)}%;background:var(--primary)"></div></div></div><span class="t-sm t-muted t-num">${c} uds.</span></div>`).join('');
+}
+
+// ─── INVENTARIO ──────────────────────────
+function renderInventario(){
+  const q=(document.getElementById('inv-search')?.value||'').toLowerCase();
+  const prods=_prods.filter(p=>!q||p.nombre.toLowerCase().includes(q)||(p.categoria||'').toLowerCase().includes(q)||(p.talla||'').toLowerCase().includes(q));
+  const el=document.getElementById('inv-list');
+  if(!prods.length){
+    el.innerHTML=`<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg><p class="t-sm">${q?'Sin resultados':'Agrega tu primer producto'}</p></div>`;
+    return;
+  }
+  el.innerHTML=prods.map(p=>{
+    const stock=+p.stock||0;
+    const badge=stock<=0?'<span class="badge badge-red">Agotado</span>':stock<=2?'<span class="badge badge-warn">Bajo</span>':'<span class="badge badge-green">'+stock+' uds.</span>';
+    const imgs=p.imagenes||[];
+    const hasImg=imgs.length>0;
+    const thumbSrc=hasImg?(imgs[0].url||imgs[0].data):'';
+    return`<div class="prod-card">
+      <div class="prod-thumb" onclick="${hasImg?`openLightbox(_prods.find(x=>x.id===${p.id}).imagenes||[],0)`:'void(0)'}" style="${hasImg?'cursor:pointer':''};background-color:var(--primary-hi)">
+        ${hasImg?`<img src="${thumbSrc}" alt="">${imgs.length>1?`<div class="photo-count">${imgs.length}</div>`:''}`:`<span>${emoji(p.categoria)}</span>`}
+      </div>
+      <div class="prod-info" onclick="selectProd(${p.id})" style="cursor:pointer">
+        <div class="prod-name">${p.nombre}</div>
+        <div class="prod-meta">${[p.categoria,p.talla,p.color].filter(Boolean).join(' · ')}</div>
+        <div style="margin-top:.35rem">${badge}</div>
+      </div>
+      <div class="prod-right" onclick="selectProd(${p.id})" style="cursor:pointer">
+        <div class="prod-price">${fmt(p.precio)}</div>
+        <div class="prod-stock t-xs t-muted">Costo: ${fmt(p.costo)}</div>
+      </div>
     </div>`;
   }).join('');
 }
-async function saveCompra(){
-  const body={ref:$('c-ref').value,proveedor:$('c-proveedor').value,pais:$('c-pais').value,fecha:$('c-fecha').value,estado:$('c-estado').value,cprod:Number($('c-cprod').value)||0,cenvio:Number($('c-cenvio').value)||0,otros:Number($('c-otros').value)||0,notas:$('c-notas').value};
-  await post('/api/compras',body);closeSheet('comp-sheet');renderCompras();
+
+function openProdSheet(){
+  editingProdId=null;productImages=[];pendingFiles=[];
+  document.getElementById('prod-sheet-title').textContent='Nuevo Producto';
+  ['p-id','p-nombre','p-cat','p-talla','p-color','p-costo','p-precio','p-stock','p-desc'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
+  document.getElementById('p-pais').value='USA';
+  document.getElementById('p-img-gallery').innerHTML='';
+  rebuildGallery();
+  closeSheet('prod-action-sheet');
+  openSheet('prod-sheet');
 }
-async function editCompra(id){
-  const c=state.compras.find(x=>x.id===id);if(!c)return;
-  const nuevoEstado=prompt('Nuevo estado:',c.estado);if(!nuevoEstado)return;
-  await put(`/api/compras/${id}`,{estado:nuevoEstado,fechaLlegada:c.fecha});
+
+function selectProd(id){
+  selectedProdId=id;
+  const p=_prods.find(x=>x.id===id);
+  document.getElementById('action-prod-name').textContent=p?.nombre||'';
+  openSheet('prod-action-sheet');
+}
+
+function editProducto(){
+  const p=_prods.find(x=>x.id===selectedProdId);
+  if(!p)return;
+  editingProdId=p.id;
+  pendingFiles=[];
+  productImages=(p.imagenes||[]).map(img=>({id:img.id,url:img.url,data:img.url}));
+  document.getElementById('prod-sheet-title').textContent='Editar Producto';
+  document.getElementById('p-id').value=p.id;
+  document.getElementById('p-nombre').value=p.nombre||'';
+  document.getElementById('p-cat').value=p.categoria||'';
+  document.getElementById('p-talla').value=p.talla||'';
+  document.getElementById('p-color').value=p.color||'';
+  document.getElementById('p-pais').value=p.pais_origen||'USA';
+  document.getElementById('p-costo').value=p.costo||0;
+  document.getElementById('p-precio').value=p.precio||0;
+  document.getElementById('p-stock').value=p.stock||0;
+  document.getElementById('p-desc').value=p.descripcion||'';
+  rebuildGallery();
+  closeSheet('prod-action-sheet');
+  openSheet('prod-sheet');
+}
+
+async function saveProducto(){
+  const nombre=document.getElementById('p-nombre').value.trim();
+  if(!nombre){alert('El nombre es obligatorio');return}
+  const data={
+    nombre,
+    categoria:document.getElementById('p-cat').value,
+    talla:document.getElementById('p-talla').value,
+    color:document.getElementById('p-color').value,
+    pais_origen:document.getElementById('p-pais').value||'USA',
+    costo:+document.getElementById('p-costo').value||0,
+    precio:+document.getElementById('p-precio').value||0,
+    stock:+document.getElementById('p-stock').value||0,
+    descripcion:document.getElementById('p-desc').value,
+    publicado:true,
+  };
+  try {
+    let prod;
+    if(editingProdId){
+      prod = await API.put('/api/productos/'+editingProdId, data);
+    } else {
+      prod = await API.post('/api/productos', data);
+    }
+    // Subir imágenes nuevas pendientes
+    const newFiles=productImages.filter(img=>String(img.id).startsWith('new-')).map(img=>img._file).filter(Boolean);
+    if(newFiles.length>0){
+      try {
+        await API.uploadImages(prod.id, newFiles);
+      } catch(imgErr){
+        console.warn('Error subiendo imágenes:', imgErr.message);
+        // Continua — el producto se guarda aunque fallen las fotos
+      }
+    }
+    await loadAll();
+    closeSheet('prod-sheet');
+    renderInventario();
+    editingProdId=null;productImages=[];pendingFiles=[];
+  } catch(err) {
+    alert('Error al guardar: '+err.message);
+  }
+}
+
+async function deleteProducto(){
+  if(!confirm('¿Eliminar este producto?'))return;
+  await API.del('/api/productos/'+selectedProdId);
+  await loadAll();
+  closeSheet('prod-action-sheet');
+  renderInventario();
+}
+
+// ─── REVENDEDORES ────────────────────────
+function renderRevendedores(){
+  const q=(document.getElementById('rev-search')?.value||'').toLowerCase();
+  const revs=_revendedores.filter(r=>!q||r.nombre.toLowerCase().includes(q)||(r.telefono||'').toLowerCase().includes(q));
+  const el=document.getElementById('rev-list');
+  if(!revs.length){
+    el.innerHTML=`<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><circle cx="16" cy="7" r="4"/></svg><p class="t-sm">${q?'Sin resultados':'Agrega tu primer revendedor'}</p></div>`;
+    return;
+  }
+  el.innerHTML=revs.map(r=>`<div class="card card-pad" onclick="selectRev(${r.id})" style="cursor:pointer">
+    <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem">
+      <div style="width:48px;height:48px;background:var(--revendedor);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.25rem">👤</div>
+      <div style="flex:1">
+        <div style="font-weight:700">${r.nombre}</div>
+        <div class="t-xs t-muted">${r.telefono||'Sin teléfono'}</div>
+      </div>
+      <span class="badge badge-revendedor">${r.descuento||0}% OFF</span>
+    </div>
+    <div class="key-box" style="font-size:.8rem">${r.key||'---'}</div>
+  </div>`).join('');
+}
+
+function openRevSheet(){
+  editingRevId=null;
+  document.getElementById('rev-sheet-title').textContent='Nuevo Revendedor';
+  ['r-id','r-nombre','r-telefono','r-descuento','r-notas'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('r-key-display').textContent=generateKey();
+  document.getElementById('descuento-preview').textContent='';
+  openSheet('rev-sheet');
+}
+
+function previewDescuento(){
+  const pct=+document.getElementById('r-descuento').value||0;
+  if(!pct||!_prods.length){document.getElementById('descuento-preview').textContent='';return}
+  const sample=_prods.find(p=>p.precio>0);
+  if(sample){const rev=sample.precio*(1-pct/100);document.getElementById('descuento-preview').textContent=`Ej: ${fmt(sample.precio)} → ${fmt(rev)} (${sample.nombre})`}
+}
+
+function selectRev(id){
+  selectedRevId=id;
+  const r=_revendedores.find(x=>x.id===id);
+  document.getElementById('action-rev-name').textContent=r?.nombre||'';
+  document.getElementById('action-rev-key').textContent=r?.key||'---';
+  document.getElementById('action-rev-desc').textContent=(r?.descuento||0)+'% de descuento';
+  document.getElementById('action-rev-phone').textContent=r?.telefono||'';
+  openSheet('rev-action-sheet');
+}
+
+function copyRevKey(){
+  const r=_revendedores.find(x=>x.id===selectedRevId);
+  if(!r?.key)return;
+  navigator.clipboard?.writeText(r.key).then(()=>alert('KEY copiada: '+r.key)).catch(()=>alert('KEY: '+r.key));
+}
+
+function editRevendedor(){
+  const r=_revendedores.find(x=>x.id===selectedRevId);
+  if(!r)return;
+  editingRevId=r.id;
+  document.getElementById('rev-sheet-title').textContent='Editar Revendedor';
+  document.getElementById('r-id').value=r.id;
+  document.getElementById('r-nombre').value=r.nombre||'';
+  document.getElementById('r-telefono').value=r.telefono||'';
+  document.getElementById('r-descuento').value=r.descuento||0;
+  document.getElementById('r-notas').value=r.notas||'';
+  document.getElementById('r-key-display').textContent=r.key||generateKey();
+  closeSheet('rev-action-sheet');openSheet('rev-sheet');
+}
+
+async function saveRevendedor(){
+  const nombre=document.getElementById('r-nombre').value.trim();
+  if(!nombre){alert('El nombre es obligatorio');return}
+  const keyDisplay=document.getElementById('r-key-display').textContent;
+  const data={nombre,telefono:document.getElementById('r-telefono').value,descuento:+document.getElementById('r-descuento').value||0,notas:document.getElementById('r-notas').value};
+  try {
+    if(editingRevId){
+      await API.put('/api/revendedores/'+editingRevId, data);
+    } else {
+      await API.post('/api/revendedores', {...data, key:keyDisplay});
+    }
+    await loadAll();
+    closeSheet('rev-sheet');
+    renderRevendedores();
+    editingRevId=null;
+  } catch(err) {
+    alert('Error: '+err.message);
+  }
+}
+
+async function deleteRevendedor(){
+  if(!confirm('¿Eliminar este revendedor?'))return;
+  await API.del('/api/revendedores/'+selectedRevId);
+  await loadAll();
+  closeSheet('rev-action-sheet');
+  renderRevendedores();
+}
+
+// ─── WHATSAPP ────────────────────────────
+function editWhatsApp(){
+  document.getElementById('wa-number').value=_whatsapp;
+  openSheet('wa-sheet');
+}
+async function saveWhatsApp(){
+  const num=document.getElementById('wa-number').value.trim();
+  await API.patch('/api/config', {whatsapp: num});
+  _whatsapp=num;
+  closeSheet('wa-sheet');
+  alert('✅ Número guardado');
+}
+
+// ─── VENTAS ──────────────────────────────
+function renderVentaSearch(){
+  const q=(document.getElementById('venta-search')?.value||'').toLowerCase();
+  const el=document.getElementById('venta-search-results');
+  if(!q){el.innerHTML='';return}
+  const prods=_prods.filter(p=>(p.nombre.toLowerCase().includes(q)||(p.talla||'').toLowerCase().includes(q))&&(+p.stock||0)>0);
+  el.innerHTML=prods.slice(0,6).map(p=>`<button style="display:flex;align-items:center;gap:.625rem;padding:.5rem .75rem;background:var(--surface2);border-radius:var(--r-md);text-align:left;width:100%" onclick="addToCart(${p.id})"><span style="font-size:1.1rem">${emoji(p.categoria)}</span><span style="flex:1;font-size:.875rem;font-weight:500">${p.nombre}${p.talla?' ('+p.talla+')':''}</span><span style="font-weight:700;color:var(--primary)">${fmt(p.precio)}</span><span class="t-xs t-muted">${p.stock} uds.</span></button>`).join('')||'<p class="t-sm t-muted" style="padding:.5rem">Sin resultados con stock</p>';
+}
+
+function addToCart(pid){
+  const p=_prods.find(x=>x.id===pid);
+  if(!p||!(+p.stock||0))return;
+  const ex=cart.find(i=>i.id===pid);
+  if(ex){if(ex.qty<ex.stock)ex.qty++;else{alert('Stock insuficiente');return}}
+  else cart.push({id:p.id,nombre:p.nombre,talla:p.talla||'',precio:+p.precio||0,qty:1,stock:+p.stock||0});
+  document.getElementById('venta-search').value='';
+  document.getElementById('venta-search-results').innerHTML='';
+  renderCartUI();
+}
+
+function renderCartUI(){
+  const el=document.getElementById('cart-items');
+  if(!cart.length){el.innerHTML='<p class="t-sm t-muted" style="text-align:center;padding:.5rem 0">Busca y agrega productos al carrito</p>';document.getElementById('cart-total').textContent='$0.00';return}
+  el.innerHTML=cart.map((i,idx)=>`<div class="cart-item"><span class="cart-name">${i.nombre}${i.talla?' ('+i.talla+')':''}</span><div class="cart-qty"><button class="qty-btn" onclick="changeQty(${idx},-1)">−</button><span class="t-sm t-num" style="min-width:20px;text-align:center">${i.qty}</span><button class="qty-btn" onclick="changeQty(${idx},1)">+</button></div><span class="cart-price">${fmt(i.precio*i.qty)}</span></div>`).join('');
+  document.getElementById('cart-total').textContent=fmt(cart.reduce((s,i)=>s+i.precio*i.qty,0));
+}
+
+function changeQty(idx,delta){
+  cart[idx].qty+=delta;
+  if(cart[idx].qty<=0)cart.splice(idx,1);
+  else if(cart[idx].qty>cart[idx].stock)cart[idx].qty=cart[idx].stock;
+  renderCartUI();
+}
+
+async function registrarVenta(){
+  if(!cart.length){alert('El carrito está vacío');return}
+  const total=cart.reduce((s,i)=>s+i.precio*i.qty,0);
+  const venta={
+    cliente:document.getElementById('v-cliente').value||'Cliente general',
+    metodo:document.getElementById('v-metodo').value,
+    total,
+    items:cart.map(i=>({id:i.id,nombre:i.nombre,qty:i.qty,precio:i.precio})),
+  };
+  try {
+    await API.post('/api/ventas', venta);
+    await loadAll();
+    cart=[];
+    document.getElementById('v-cliente').value='';
+    alert(`✅ Venta registrada por ${fmt(total)}`);
+    renderCartUI();renderVentasList();
+  } catch(err) {
+    alert('Error al registrar: '+err.message);
+  }
+}
+
+function renderVentasList(){
+  const el=document.getElementById('ventas-list');
+  if(!_ventas.length){el.innerHTML=`<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="40"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><p class="t-sm">Sin ventas aún</p></div>`;return}
+  el.innerHTML=[..._ventas].map(v=>{const d=new Date(v.fecha);return`<div class="sale-card"><div class="sale-icon">🧾</div><div style="flex:1;min-width:0"><div style="font-weight:600;font-size:.9rem">${v.cliente}</div><div class="t-xs t-muted">${d.toLocaleDateString('es')} ${d.toLocaleTimeString('es',{hour:'2-digit',minute:'2-digit'})} · ${(v.items||[]).reduce((s,i)=>s+i.qty,0)} art. · ${v.metodo}</div></div><div style="font-weight:700;font-size:1.05rem;color:var(--success)">${fmt(v.total)}</div></div>`}).join('');
+}
+
+// ─── COMPRAS ─────────────────────────────
+function renderCompras(){
+  const el=document.getElementById('comp-list');
+  if(!_compras.length){el.innerHTML=`<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><p class="t-sm">Registra tu primera compra</p></div>`;return}
+  el.innerHTML=[..._compras].map(c=>{
+    const total=(+c.cprod||0)+(+c.cenvio||0)+(+c.otros||0);
+    const badge=c.estado==="Llegó"?'<span class="badge badge-green">✅ Llegó</span>':c.estado==="Cancelada"?'<span class="badge badge-red">❌ Cancelada</span>':'<span class="badge badge-warn">✈️ En tránsito</span>';
+    return`<div class="purch-card" onclick="selectComp(${c.id})"><div class="purch-head">${badge}<span class="t-xl t-num">${fmt(total)}</span></div><div class="purch-detail"><span><strong>${c.ref||'Sin ref.'}</strong> — ${c.proveedor||''} (${c.pais||'USA'})</span><span>Orden: ${c.fecha||'—'}</span><span>Prods: ${fmt(c.cprod)} · Envío: ${fmt(c.cenvio)} · Otros: ${fmt(c.otros)}</span>${c.notas?`<span style="color:var(--muted);font-style:italic">${c.notas}</span>`:''}</div></div>`;
+  }).join('');
+}
+
+function selectComp(id){
+  selectedCompId=id;
+  const c=_compras.find(x=>x.id===id);
+  document.getElementById('action-comp-ref').textContent=(c?.ref||'Compra')+' — '+(c?.proveedor||'');
+  openSheet('comp-action-sheet');
+}
+
+async function saveCompra(){
+  try {
+    await API.post('/api/compras',{
+      ref:document.getElementById('c-ref').value,
+      proveedor:document.getElementById('c-prov').value,
+      pais:document.getElementById('c-pais').value||'USA',
+      fecha:document.getElementById('c-fecha').value,
+      estado:document.getElementById('c-estado').value,
+      cprod:+document.getElementById('c-cprod').value||0,
+      cenvio:+document.getElementById('c-cenvio').value||0,
+      otros:+document.getElementById('c-otros').value||0,
+      notas:document.getElementById('c-notas').value,
+    });
+    await loadAll();
+    ['c-ref','c-prov','c-cprod','c-cenvio','c-otros','c-notas'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('c-pais').value='USA';
+    document.getElementById('c-fecha').value=today();
+    closeSheet('comp-sheet');
+    renderCompras();
+  } catch(err) { alert('Error: '+err.message); }
+}
+
+async function markCompraArrived(){
+  await API.patch('/api/compras/'+selectedCompId+'/llego', {});
+  await loadAll();
+  closeSheet('comp-action-sheet');
   renderCompras();
 }
 
-// ─── VENTAS ────────────────────────────────
-async function loadVentas(){state.ventas=await get('/api/ventas')}
-async function renderVentas(){
-  await loadVentas();
-  const list=$('ventas-list');
-  if(!state.ventas.length){list.innerHTML='<div class="empty"><span class="t-sm">Sin ventas</span></div>';return}
-  list.innerHTML=state.ventas.map(v=>`
-    <div class="sale-card">
-      <div class="sale-icon">💰</div>
-      <div style="flex:1">
-        <div style="font-weight:600">${v.cliente||'Cliente general'}</div>
-        <div class="t-xs t-muted">${v.fecha||''} · ${v.metodo||''}</div>
-      </div>
-      <div style="font-weight:700;color:var(--primary)">${fmt(v.total)}</div>
-    </div>`).join('');
-}
-function renderVentaSearch(){
-  const q=$('venta-search').value.toLowerCase();
-  const res=$('venta-search-results');
-  if(!q){res.innerHTML='';return}
-  const filtro=state.productos.filter(p=>p.stock>0&&[p.nombre,p.categoria,p.talla].some(x=>(x||'').toLowerCase().includes(q)));
-  res.innerHTML=filtro.map(p=>`
-    <div class="prod-card" style="padding:.625rem 1rem" onclick="addToCart(${p.id})">
-      <div style="font-weight:500">${p.nombre}</div>
-      <div class="t-sm t-muted">${p.talla||''} · Stock ${p.stock} · ${fmt(p.precio)}</div>
-    </div>`).join('');
-}
-function addToCart(id){
-  const p=state.productos.find(x=>x.id===id);if(!p)return;
-  const existing=state.cart.find(c=>c.id===id);
-  if(existing){if(existing.qty<p.stock)existing.qty++}else{state.cart.push({id,qty:1,producto:p})}
-  renderCart();
-}
-function updateCart(id,delta){
-  const item=state.cart.find(c=>c.id===id);if(!item)return;
-  item.qty+=delta;
-  if(item.qty<=0)state.cart=state.cart.filter(c=>c.id!==id);
-  renderCart();
-}
-function renderCart(){
-  const list=$('cart-items');
-  if(!state.cart.length){list.innerHTML='';$('cart-total').textContent='$0.00';return}
-  let total=0;
-  list.innerHTML=state.cart.map(c=>{
-    total+=c.qty*c.producto.precio;
-    return `<div class="cart-item">
-      <div class="cart-name">${c.producto.nombre}</div>
-      <div class="cart-qty"><span class="qty-btn" onclick="updateCart(${c.id},-1)">−</span><span>${c.qty}</span><span class="qty-btn" onclick="updateCart(${c.id},1)">+</span></div>
-      <div class="cart-price">${fmt(c.qty*c.producto.precio)}</div>
-    </div>`;
-  }).join('');
-  $('cart-total').textContent=fmt(total);
-}
-async function registrarVenta(){
-  if(!state.cart.length)return alert('Agrega productos al carrito');
-  const total=state.cart.reduce((sum,c)=>sum+c.qty*c.producto.precio,0);
-  const body={fecha:nowDate(),cliente:$('v-cliente').value||'Cliente general',metodo:$('v-metodo').value,total,items:state.cart.map(c=>({id:c.id,qty:c.qty,nombre:c.producto.nombre,precio:c.producto.precio}))};
-  await post('/api/ventas',body);
-  state.cart=[];renderCart();$('venta-search').value='';$('v-cliente').value='';renderVentas();renderDashboard();renderInventario();
+async function deleteCompra(){
+  if(!confirm('¿Eliminar esta compra?'))return;
+  await API.del('/api/compras/'+selectedCompId);
+  await loadAll();
+  closeSheet('comp-action-sheet');
+  renderCompras();
 }
 
-// ─── DASHBOARD ─────────────────────────────
-async function renderDashboard(){
-  await Promise.all([loadProductos(),loadRevendedores(),loadVentas()]);
-  const hoy=nowDate();
-  const ventasHoy=state.ventas.filter(v=>v.fecha===hoy);
-  const ingHoy=ventasHoy.reduce((s,v)=>s+(v.total||0),0);
-  const totalVentas=state.ventas.length;
-  const totalIng=state.ventas.reduce((s,v)=>s+(v.total||0),0);
-  const stockTotal=state.productos.reduce((s,p)=>s+(p.stock||0),0);
-  $('d-ventas-hoy').textContent=ventasHoy.length;
-  $('d-ing-hoy').textContent=fmt(ingHoy);
-  $('d-productos').textContent=state.productos.length;
-  $('d-stock').textContent=stockTotal;
-  $('d-revendedores').textContent=state.revendedores.length;
-  $('d-total-ventas').textContent=totalVentas;
-  $('d-total-ing').textContent=fmt(totalIng);
-  $('dash-date').textContent=new Date().toLocaleDateString('es-MX',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
-  // Top productos
-  const conteo={};
-  state.ventas.forEach(v=>{(v.items||[]).forEach(it=>{conteo[it.nombre]=(conteo[it.nombre]||0)+it.qty})});
-  const top=Object.entries(conteo).sort((a,b)=>b[1]-a[1]).slice(0,5);
-  const topList=$('dash-top-list');
-  if(!top.length){topList.innerHTML='<div class="empty" style="padding:1.5rem"><span class="t-sm">Aún no hay ventas registradas</span></div>'}
-  else{topList.innerHTML=top.map(([name,qty],i)=>`<div class="card-row"><span style="font-weight:700;color:var(--primary);min-width:24px">#${i+1}</span><span style="flex:1">${name}</span><span class="t-sm t-muted">${qty} vendidos</span></div>`).join('')}
-}
-
-// ─── WHATSAPP ──────────────────────────────
-async function editWhatsApp(){const r=await get('/api/config/whatsapp');$('wa-numero').value=r.value||'';openSheet('wa-sheet')}
-async function saveWhatsApp(){await post('/api/config/whatsapp',{value:$('wa-numero').value});closeSheet('wa-sheet')}
-
-// ─── LIGHTBOX ──────────────────────────────
-function openLightbox(images,idx){
-  state.currentLb={images,idx};
-  $('lb-img').src=images[idx];
-  $('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
-  $('lb-nav').innerHTML=images.map((_,i)=>`<button class="lightbox-dot ${i===idx?'active':''}" onclick="goLb(${i})"></button>`).join('');
-}
-function closeLightbox(e){if(e.target.id==='lightbox')closeLightboxBtn()}
-function closeLightboxBtn(){$('lightbox').classList.remove('open');document.body.style.overflow=''}
-function goLb(i){state.currentLb.idx=i;$('lb-img').src=state.currentLb.images[i];document.querySelectorAll('.lightbox-dot').forEach((d,idx)=>d.classList.toggle('active',idx===i))}
-function nextLb(){goLb((state.currentLb.idx+1)%state.currentLb.images.length)}
-function prevLb(){goLb((state.currentLb.idx-1+state.currentLb.images.length)%state.currentLb.images.length)}
-
-// ─── THEME ─────────────────────────────────
-function toggleTheme(){
-  const html=document.documentElement;
-  html.dataset.theme=html.dataset.theme==='dark'?'light':'dark';
-  localStorage.setItem('theme',html.dataset.theme);
-}
-(function initTheme(){const t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t})();
-
-// ─── INIT ──────────────────────────────────
-renderDashboard();
+// ─── INIT ────────────────────────────────
+document.addEventListener('DOMContentLoaded', async ()=>{
+  document.getElementById('c-fecha').value=today();
+  await loadAll();
+  renderDashboard();
+});
 </script>
 </body>
 </html>
-
