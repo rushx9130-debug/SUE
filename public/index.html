@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tienda Pro</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#0f0e0d;color:#e8e5e0;min-height:100vh;display:flex;align-items:center;justify-content:center}
+.wrap{text-align:center;padding:2rem}
+h1{font-size:1.75rem;font-weight:700;margin-bottom:.5rem;color:#f472b6}
+p{color:#9ca3af;margin-bottom:2rem}
+.links{display:flex;flex-direction:column;gap:1rem;max-width:320px;margin:0 auto}
+a{display:block;padding:1rem;border-radius:.75rem;font-weight:600;text-decoration:none;transition:opacity .15s}
+a:hover{opacity:.85}
+.admin{background:#be185d;color:#fff}
+.tienda{background:#1c1a18;border:1.5px solid #333;color:#e8e5e0}
+.portal{background:#059669;color:#fff}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🛍️ Tienda Pro</h1>
+  <p>Selecciona el panel que deseas abrir</p>
+  <div class="links">
+    <a href="/panel-admin.html" class="admin">📊 Panel Admin</a>
+    <a href="/tienda-publica.html" class="tienda">🛒 Tienda Pública</a>
+    <a href="/portal-revendedores.html" class="portal">🔑 Portal Revendedores</a>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portal Revendedores</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f0f4f8;--surface:#fff;--surface2:#e8edf3;
+  --dark:#111827;--text:#1f2937;--muted:#6b7280;
+  --accent:#0ea5e9;--accent-d:#0284c7;
+  --green:#059669;--green-l:#ecfdf5;--green-d:#047857;
+  --border:#e5e7eb;--border2:#d1d5db;
+  --font:'Space Grotesk',system-ui,sans-serif;
+  --mono:'Space Mono',monospace;
+  --r:10px;
+}
+html{font-size:16px}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+button{cursor:pointer;border:none;font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+input,select{font:inherit;color:inherit;border:none;outline:none;background:none}
+
+/* LOGIN */
+.login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem;background:linear-gradient(135deg,#0f172a 0%,#1e293b 50%,#0f172a 100%)}
+.login-card{width:100%;max-width:400px;background:#1e293b;border-radius:20px;padding:2.5rem;border:1px solid rgba(255,255,255,.08)}
+.login-logo{text-align:center;margin-bottom:2rem}
+.login-icon{width:72px;height:72px;background:linear-gradient(135deg,var(--accent),#6366f1);border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:2rem}
+.login-title{font-size:1.375rem;font-weight:700;color:#f1f5f9;text-align:center}
+.login-sub{font-size:.85rem;color:#94a3b8;text-align:center;margin-top:.375rem}
+.login-field{margin-top:1.5rem}
+.login-field label{display:block;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#64748b;margin-bottom:.5rem}
+.login-field input{width:100%;background:#0f172a;border:1.5px solid rgba(255,255,255,.1);border-radius:10px;padding:1rem 1.125rem;font-size:1rem;color:#f1f5f9;font-family:var(--mono);letter-spacing:.15em;transition:border-color .2s}
+.login-field input:focus{border-color:var(--accent);outline:none}
+.login-btn{width:100%;margin-top:1.25rem;padding:1rem;background:linear-gradient(135deg,var(--accent),#6366f1);color:#fff;border-radius:10px;font-size:1rem;font-weight:700;letter-spacing:.02em;transition:opacity .15s}
+.login-btn:hover{opacity:.9}
+.login-btn:active{opacity:.8}
+.login-error{margin-top:.875rem;padding:.75rem 1rem;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);border-radius:8px;font-size:.85rem;color:#fca5a5;text-align:center;display:none}
+.login-note{margin-top:1.25rem;font-size:.78rem;color:#475569;text-align:center;line-height:1.6}
+
+/* PORTAL */
+.portal{display:none}
+.portal.open{display:block}
+
+/* TOPBAR */
+.topbar{background:#0f172a;color:#f1f5f9;padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.topbar-brand{font-size:1rem;font-weight:700;display:flex;align-items:center;gap:.625rem}
+.topbar-brand-dot{width:8px;height:8px;background:var(--green);border-radius:50%}
+.topbar-user{display:flex;align-items:center;gap:.75rem}
+.rev-chip{background:rgba(5,150,105,.2);border:1px solid rgba(5,150,105,.35);color:#34d399;padding:.375rem .875rem;border-radius:999px;font-size:.75rem;font-weight:700;letter-spacing:.04em}
+.logout-btn{font-size:.8rem;color:#64748b;padding:.375rem .625rem;border-radius:6px;transition:background .15s}
+.logout-btn:hover{background:rgba(255,255,255,.07);color:#94a3b8}
+
+/* WELCOME BANNER */
+.welcome-banner{background:linear-gradient(135deg,var(--green) 0%,#0284c7 100%);color:#fff;padding:1.5rem;margin:1.25rem;border-radius:16px}
+.welcome-title{font-size:1.25rem;font-weight:700;margin-bottom:.25rem}
+.welcome-sub{font-size:.875rem;opacity:.85}
+.discount-pill{display:inline-flex;align-items:center;gap:.375rem;background:rgba(255,255,255,.25);padding:.375rem .875rem;border-radius:999px;font-size:.85rem;font-weight:700;margin-top:.75rem}
+
+/* SEARCH */
+.search-bar{padding:0 1.25rem 1rem;position:relative}
+.search-bar svg{position:absolute;left:2.125rem;top:50%;transform:translateY(-50%);color:var(--muted);width:18px;height:18px}
+.search-bar input{width:100%;background:var(--surface);border:1.5px solid var(--border);border-radius:999px;padding:.75rem 1.125rem .75rem 3rem;font-size:.95rem;color:var(--text)}
+.search-bar input:focus{border-color:var(--accent);outline:none}
+
+/* FILTERS */
+.cats-row{display:flex;gap:.5rem;padding:0 1.25rem .875rem;overflow-x:auto}
+.cats-row::-webkit-scrollbar{display:none}
+.cat-btn{flex-shrink:0;padding:.4rem 1rem;border-radius:999px;font-size:.78rem;font-weight:600;border:1.5px solid var(--border);color:var(--muted);background:var(--surface);transition:all .18s;cursor:pointer}
+.cat-btn.active{background:var(--green);color:#fff;border-color:var(--green)}
+
+/* COUNT */
+.count-bar{padding:0 1.25rem .75rem;display:flex;align-items:center;justify-content:space-between}
+.count-text{font-size:.8rem;color:var(--muted);font-weight:500}
+
+/* PRODUCTS */
+.prods-list{display:flex;flex-direction:column;gap:.875rem;padding:0 1.25rem 2rem}
+
+/* PRODUCT CARD */
+.rev-card{background:var(--surface);border-radius:16px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06),0 2px 10px rgba(0,0,0,.04);display:flex;gap:0}
+.rev-card-img{width:100px;min-height:120px;flex-shrink:0;background:var(--surface2);position:relative;cursor:pointer;overflow:hidden}
+.rev-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+.rev-card-img:hover img{transform:scale(1.06)}
+.rev-card-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;background:linear-gradient(135deg,#e0f2fe,#f0fdf4)}
+.img-overlay-count{position:absolute;bottom:.375rem;left:.375rem;background:rgba(0,0,0,.65);color:#fff;font-size:.6rem;font-weight:700;padding:2px 6px;border-radius:999px}
+.img-overlay-zoom{position:absolute;top:.375rem;right:.375rem;width:24px;height:24px;background:rgba(0,0,0,.6);border-radius:6px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.75rem}
+.rev-card-body{flex:1;padding:.875rem;display:flex;flex-direction:column;gap:.375rem;min-width:0}
+.rev-card-name{font-weight:700;font-size:.95rem;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rev-card-meta{font-size:.75rem;color:var(--muted)}
+.rev-card-prices{display:flex;flex-direction:column;gap:.125rem;margin-top:.375rem}
+.price-public{font-size:.78rem;color:var(--muted);text-decoration:line-through}
+.price-rev{font-size:1.15rem;font-weight:700;color:var(--green)}
+.price-save{font-size:.72rem;background:var(--green-l);color:var(--green-d);padding:.15rem .5rem;border-radius:999px;font-weight:700;display:inline-flex;width:fit-content}
+.rev-card-actions{display:flex;gap:.5rem;margin-top:.5rem}
+.btn-wa-small{display:flex;align-items:center;gap:.375rem;padding:.5rem .75rem;background:#25D366;color:#fff;border-radius:8px;font-size:.78rem;font-weight:700;flex:1;justify-content:center;transition:opacity .15s}
+.btn-wa-small:hover{opacity:.9}
+.btn-wa-small svg{width:14px;height:14px;fill:#fff;flex-shrink:0}
+.btn-dl{display:flex;align-items:center;justify-content:center;width:36px;height:36px;background:var(--surface2);border-radius:8px;font-size:.85rem;flex-shrink:0;transition:background .15s}
+.btn-dl:hover{background:var(--border2)}
+.stock-badge{font-size:.7rem;padding:.15rem .5rem;border-radius:999px;font-weight:700;display:inline-flex;width:fit-content}
+.stock-ok{background:#dcfce7;color:#15803d}
+.stock-low{background:#fef3c7;color:#92400e}
+.stock-out{background:#fee2e2;color:#991b1b}
+
+/* LIGHTBOX */
+.lb{position:fixed;inset:0;background:rgba(0,0,0,.96);z-index:999;display:none;flex-direction:column;align-items:center;justify-content:center;padding:1rem;gap:.875rem}
+.lb.open{display:flex}
+.lb-img{max-width:100%;max-height:68dvh;border-radius:12px;object-fit:contain;border:2px solid rgba(255,255,255,.12)}
+.lb-top{width:100%;display:flex;align-items:center;justify-content:space-between;padding:.5rem 0}
+.lb-title{color:#fff;font-weight:600;font-size:.95rem}
+.lb-close{width:36px;height:36px;background:rgba(255,255,255,.12);border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;cursor:pointer;border:none}
+.lb-dots{display:flex;gap:.375rem;justify-content:center;flex-wrap:wrap}
+.lb-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;border:none;transition:all .15s}
+.lb-dot.active{background:#fff;width:20px}
+.lb-nav{display:flex;gap:.5rem}
+.lb-nav-btn{padding:.625rem 1.25rem;border-radius:999px;background:rgba(255,255,255,.12);color:#fff;font-size:1rem;cursor:pointer;border:none;transition:background .15s}
+.lb-nav-btn:hover{background:rgba(255,255,255,.2)}
+.lb-dl-btn{display:flex;align-items:center;gap:.5rem;padding:.75rem 1.5rem;background:#25D366;color:#fff;border-radius:999px;font-size:.9rem;font-weight:700;cursor:pointer;border:none;transition:opacity .15s}
+.lb-dl-btn:hover{opacity:.9}
+
+/* EMPTY */
+.empty-rev{text-align:center;padding:3rem 1rem;color:var(--muted)}
+.empty-rev .big{font-size:3rem;margin-bottom:.75rem}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login-wrap" id="login-wrap">
+  <div class="login-card">
+    <div class="login-logo">
+      <div class="login-icon">🔑</div>
+      <div class="login-title">Portal Revendedores</div>
+      <div class="login-sub">Ingresa tu KEY para acceder a tu catálogo exclusivo</div>
+    </div>
+    <div class="login-field">
+      <label>Tu KEY de Revendedor</label>
+      <input id="key-input" type="text" placeholder="XXXX-XXXX-XXXX" maxlength="14" oninput="formatKey(this)" onkeydown="if(event.key==='Enter')loginWithKey()">
+    </div>
+    <button class="login-btn" onclick="loginWithKey()">Entrar al Portal →</button>
+    <div class="login-error" id="login-error">❌ KEY inválida. Verifica con tu proveedor.</div>
+    <div class="login-note">Tu KEY es única y personal. No la compartas con nadie más. Cada KEY tiene sus propios precios de revendedor asignados.</div>
+  </div>
+</div>
+
+<!-- PORTAL -->
+<div class="portal" id="portal">
+  <div class="topbar">
+    <div class="topbar-brand">
+      <div class="topbar-brand-dot"></div>
+      Portal Revendedores
+    </div>
+    <div class="topbar-user">
+      <div class="rev-chip" id="topbar-rev-name">Revendedor</div>
+      <button class="logout-btn" onclick="logout()">Salir</button>
+    </div>
+  </div>
+
+  <div class="welcome-banner" id="welcome-banner">
+    <div class="welcome-title" id="welcome-name">Hola!</div>
+    <div class="welcome-sub">Aquí tienes tu catálogo con tus precios especiales</div>
+    <div class="discount-pill" id="discount-pill">
+      <span>🏷️</span> <span id="discount-val">0%</span> de descuento en todos los productos
+    </div>
+  </div>
+
+  <div class="search-bar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <input type="search" placeholder="Buscar productos…" id="rev-search" oninput="renderRevProds()">
+  </div>
+
+  <div class="cats-row" id="cats-row">
+    <button class="cat-btn active" onclick="setCat('todos',this)">Todos</button>
+  </div>
+
+  <div class="count-bar">
+    <span class="count-text" id="rev-count">0 productos</span>
+  </div>
+
+  <div class="prods-list" id="rev-prods"></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLbOnBg(event)">
+  <div class="lb-top">
+    <div class="lb-title" id="lb-title">Foto del producto</div>
+    <button class="lb-close" onclick="closeLb()">✕</button>
+  </div>
+  <img class="lb-img" id="lb-img" src="" alt="">
+  <div class="lb-dots" id="lb-dots"></div>
+  <div class="lb-nav">
+    <button class="lb-nav-btn" onclick="lbNav(-1)">‹</button>
+    <button class="lb-nav-btn" onclick="lbNav(1)">›</button>
+  </div>
+  <button class="lb-dl-btn" onclick="downloadLbImg()">
+    ⬇️ Descargar foto
+  </button>
+</div>
+
+<script>
+const API_BASE = '';
+
+const fmt=(n)=>'$'+Number(n||0).toFixed(2);
+const emoji=(cat)=>{const m={'blusas':'👚','pantalones':'👖','vestidos':'👗','zapatos':'👟','bolsos':'👜','accesorios':'💍','camisetas':'👕','pijamas':'🌙','abrigos':'🧥'};return m[(cat||'').toLowerCase()]||'🛍️'};
+
+let currentRev=null;
+let lbImages=[], lbIdx=0;
+let currentCat='todos';
+let _prods=[];
+
+// ─── KEY FORMAT ──────────────────────────
+function formatKey(input){
+  let v=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'');
+  let formatted='';
+  for(let i=0;i<v.length&&i<12;i++){
+    if(i===4||i===8) formatted+='-';
+    formatted+=v[i];
+  }
+  input.value=formatted;
+}
+
+// ─── LOGIN ───────────────────────────────
+async function loginWithKey(){
+  const key=document.getElementById('key-input').value.trim().toUpperCase();
+  try {
+    const r = await fetch(API_BASE + '/api/revendedores/by-key/' + encodeURIComponent(key));
+    if(!r.ok) throw new Error('KEY inválida');
+    const rev = await r.json();
+    currentRev=rev;
+    sessionStorage.setItem('rev_key', key);
+    startPortal();
+  } catch {
+    document.getElementById('login-error').style.display='block';
+    document.getElementById('key-input').style.borderColor='rgba(239,68,68,.6)';
+  }
+}
+
+function startPortal(){
+  document.getElementById('login-wrap').style.display='none';
+  document.getElementById('portal').classList.add('open');
+  document.getElementById('topbar-rev-name').textContent=currentRev.nombre;
+  document.getElementById('welcome-name').textContent='Hola, '+currentRev.nombre+' 👋';
+  document.getElementById('discount-val').textContent=(currentRev.descuento||0)+'%';
+  loadAndRender();
+}
+
+function logout(){
+  currentRev=null;
+  sessionStorage.removeItem('rev_key');
+  document.getElementById('login-wrap').style.display='';
+  document.getElementById('portal').classList.remove('open');
+  document.getElementById('key-input').value='';
+  document.getElementById('login-error').style.display='none';
+}
+
+// ─── LOAD DATA ───────────────────────────
+async function loadAndRender(){
+  try {
+    const r = await fetch(API_BASE + '/api/productos?publicado=1');
+    _prods = r.ok ? await r.json() : [];
+  } catch { _prods=[]; }
+  buildCats();
+  renderRevProds();
+}
+
+async function getWA(){
+  try {
+    const r = await fetch(API_BASE + '/api/config');
+    const cfg = r.ok ? await r.json() : {};
+    return cfg.whatsapp || '';
+  } catch { return ''; }
+}
+
+// ─── CATS ────────────────────────────────
+function buildCats(){
+  const cats=[...new Set(_prods.map(p=>p.categoria).filter(Boolean))];
+  const row=document.getElementById('cats-row');
+  row.innerHTML='<button class="cat-btn active" onclick="setCat('todos',this)">Todos</button>';
+  cats.forEach(cat=>{
+    const btn=document.createElement('button');
+    btn.className='cat-btn';
+    btn.textContent=cat;
+    btn.onclick=function(){setCat(cat,this)};
+    row.appendChild(btn);
+  });
+}
+
+function setCat(cat,btn){
+  currentCat=cat;
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderRevProds();
+}
+
+// ─── PRODUCTS ────────────────────────────
+async function renderRevProds(){
+  if(!currentRev) return;
+  const q=(document.getElementById('rev-search')?.value||'').toLowerCase();
+  const descuento=+currentRev.descuento||0;
+  let prods=[..._prods];
+  if(currentCat!=='todos') prods=prods.filter(p=>(p.categoria||'').toLowerCase()===currentCat.toLowerCase());
+  if(q) prods=prods.filter(p=>p.nombre.toLowerCase().includes(q)||(p.categoria||'').toLowerCase().includes(q)||(p.talla||'').toLowerCase().includes(q));
+
+  const el=document.getElementById('rev-prods');
+  document.getElementById('rev-count').textContent=prods.length+' producto'+(prods.length!==1?'s':'');
+
+  if(!prods.length){
+    el.innerHTML=`<div class="empty-rev"><div class="big">🔍</div><p>No se encontraron productos</p></div>`;
+    return;
+  }
+
+  const wa = await getWA();
+  window._revProdsFiltered=prods;
+
+  el.innerHTML=prods.map((p,pIdx)=>{
+    const precioPublico=+p.precio||0;
+    const precioRev=precioPublico*(1-descuento/100);
+    const ahorro=precioPublico-precioRev;
+    const stock=+p.stock||0;
+    const imgs=p.imagenes||[];
+    const hasImg=imgs.length>0;
+
+    const stockBadge=stock<=0?'<span class="stock-badge stock-out">Agotado</span>':stock<=2?`<span class="stock-badge stock-low">${stock} disponibles</span>`:`<span class="stock-badge stock-ok">${stock} en stock</span>`;
+
+    const msg=`Hola! Soy ${currentRev.nombre}, quiero consultar sobre:\n*${p.nombre}*${p.talla?'\nTalla: '+p.talla:''}\nMi precio: ${fmt(precioRev)}\n¿Hay disponibilidad?`;
+    const waHref=wa?`https://wa.me/${wa}?text=${encodeURIComponent(msg)}`:'#';
+
+    const imgSrc=hasImg?(imgs[0].url||imgs[0].data):'';
+    const imgSection=hasImg
+      ?`<img src="${imgSrc}" alt="${p.nombre}" loading="lazy">
+        ${imgs.length>1?`<div class="img-overlay-count">📷 ${imgs.length}</div>`:''}
+        <div class="img-overlay-zoom">🔍</div>`
+      :`<div class="rev-card-img-placeholder">${emoji(p.categoria)}</div>`;
+
+    return`<div class="rev-card">
+      <div class="rev-card-img" onclick="openLb(${pIdx})" title="Ver fotos">
+        ${imgSection}
+      </div>
+      <div class="rev-card-body">
+        <div class="rev-card-name" title="${p.nombre}">${p.nombre}</div>
+        <div class="rev-card-meta">${[p.categoria,p.talla&&'Talla '+p.talla,p.color].filter(Boolean).join(' · ')}</div>
+        ${stockBadge}
+        <div class="rev-card-prices">
+          <div class="price-public">Precio público: ${fmt(precioPublico)}</div>
+          <div class="price-rev">${fmt(precioRev)}</div>
+          ${descuento>0?`<div class="price-save">Ahorras ${fmt(ahorro)} (${descuento}% OFF)</div>`:''}
+        </div>
+        <div class="rev-card-actions">
+          ${stock>0?`<a class="btn-wa-small" href="${waHref}" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.128.558 4.121 1.533 5.847L.072 23.928l6.262-1.439A11.93 11.93 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.663-.52-5.18-1.427l-.371-.22-3.856.886.924-3.749-.239-.387A9.958 9.958 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Consultar
+          </a>`:`<div class="btn-wa-small" style="background:#9ca3af;pointer-events:none">Sin stock</div>`}
+          ${hasImg?`<button class="btn-dl" onclick="openLb(${pIdx})" title="Ver y descargar fotos">🖼️</button>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ─── LIGHTBOX ────────────────────────────
+function openLb(prodIdx){
+  const prods=window._revProdsFiltered||[];
+  const p=prods[prodIdx];
+  if(!p) return;
+  const imgs=p.imagenes||[];
+  if(!imgs.length){alert('Este producto no tiene fotos');return}
+  lbImages=imgs;lbIdx=0;
+  document.getElementById('lb-title').textContent=p.nombre;
+  showLbImg();
+  document.getElementById('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function showLbImg(){
+  document.getElementById('lb-img').src=lbImages[lbIdx].url||lbImages[lbIdx].data;
+  const dots=document.getElementById('lb-dots');
+  if(lbImages.length>1){
+    dots.innerHTML=lbImages.map((x,i)=>`<button class="lb-dot${i===lbIdx?' active':''}" onclick="lbGo(${i})"></button>`).join('');
+  } else dots.innerHTML='';
+}
+
+function lbNav(dir){lbIdx=(lbIdx+dir+lbImages.length)%lbImages.length;showLbImg()}
+function lbGo(i){lbIdx=i;showLbImg()}
+function closeLb(){document.getElementById('lb').classList.remove('open');document.body.style.overflow=''}
+function closeLbOnBg(e){if(e.target===document.getElementById('lb'))closeLb()}
+
+function downloadLbImg(){
+  const img=lbImages[lbIdx];
+  const a=document.createElement('a');
+  a.href=img.url||img.data;
+  a.download='foto-'+Date.now()+'.jpg';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+}
+
+// ─── AUTO LOGIN ──────────────────────────
+window.addEventListener('DOMContentLoaded', async ()=>{
+  const savedKey=sessionStorage.getItem('rev_key');
+  if(savedKey){
+    try {
+      const r = await fetch(API_BASE + '/api/revendedores/by-key/' + encodeURIComponent(savedKey));
+      if(r.ok){
+        currentRev=await r.json();
+        startPortal();
+      }
+    } catch {}
+  }
+});
+</script>
+</body>
+</html>
