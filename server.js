@@ -6,7 +6,7 @@ const cors       = require('cors');
 const path       = require('path');
 const fs         = require('fs');
 const multer     = require('multer');
-const { v4: uuid } = require('uuid');
+const { randomUUID: uuid } = require('crypto'); // built-in Node ≥14, sin instalar nada
 const db         = require('./db');
 
 const app  = express();
