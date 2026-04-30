@@ -6,14 +6,16 @@ const cors       = require('cors');
 const path       = require('path');
 const fs         = require('fs');
 const multer     = require('multer');
-const uuid = () => require('crypto').randomUUID();
+const { v4: uuid } = require('uuid');
 const db         = require('./db');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
 
 // ─── DIRECTORIO DE UPLOADS ──────────────────────────────────────────────────
-const UPLOADS_DIR = path.join(__dirname, 'uploads');
+// IMPORTANTE: En Railway configura Variable UPLOADS_DIR=/data/uploads
+// y monta un Volume en /data para que las fotos NO se borren al redeploy.
+const UPLOADS_DIR = process.env.UPLOADS_DIR || path.join(__dirname, 'uploads');
 if (!fs.existsSync(UPLOADS_DIR)) fs.mkdirSync(UPLOADS_DIR, { recursive: true });
 
 // ─── MIDDLEWARE ─────────────────────────────────────────────────────────────
@@ -47,9 +49,7 @@ const upload = multer({
 function buildImageUrl(req, filename) {
   if (!filename) return null;
   // En Railway usa la URL pública; en local usa localhost
-  // Usa x-forwarded-proto para manejar proxies HTTPS correctamente
-  const proto = req.get('x-forwarded-proto') || req.protocol;
-  const base = process.env.PUBLIC_URL || `${proto}://${req.get('host')}`;
+  const base = process.env.PUBLIC_URL || `${req.protocol}://${req.get('host')}`;
   return `${base}/uploads/${filename}`;
 }
 
@@ -150,7 +150,7 @@ app.post('/api/productos', (req, res) => {
     +precio || 0,
     +stock  || 0,
     descripcion || '',
-    (publicado === false || publicado === 'false' || publicado === 0 || publicado === '0') ? 0 : 1
+    publicado === false ? 0 : 1
   );
   res.status(201).json(getProductoFull(req, info.lastInsertRowid));
 });
@@ -175,7 +175,7 @@ app.put('/api/productos/:id', (req, res) => {
     +precio || 0,
     +stock  || 0,
     descripcion || '',
-    (publicado === false || publicado === 'false' || publicado === 0 || publicado === '0') ? 0 : 1,
+    publicado === false ? 0 : 1,
     req.params.id
   );
   res.json(getProductoFull(req, req.params.id));
@@ -426,6 +426,7 @@ app.use((err, req, res, next) => {
 // ─── START ────────────────────────────────────────────────────────────────────
 app.listen(PORT, () => {
   console.log(`✅ Tienda Pro backend corriendo en puerto ${PORT}`);
-  console.log(`   API:      http://localhost:${PORT}/api`);
   console.log(`   Frontend: http://localhost:${PORT}`);
+  console.log(`   DB:       ${process.env.DB_PATH || path.join(__dirname, 'tienda.db')}`);
+  console.log(`   Uploads:  ${UPLOADS_DIR}`);
 });
